@@ -1,0 +1,78 @@
+/* container default style 
+----------------------------------------------------
+*/
+.origin-container {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* intro style
+----------------------------------------------------
+*/
+.intro {
+    position: absolute;
+    top: 0;
+    padding-top: 200px;
+    padding-bottom: 150px;
+    text-align: center;
+}
+
+.intro-title {
+    font-family: 'Circular Std Bold';
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.intro-desc {
+    font-family: 'Roboto';
+    font-weight: 300;
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: grey;
+}
+
+.intro-btn {
+    font-family: 'Circular Std Bold';
+    font-size: 20px;
+    margin: 25px 0px 50px 0px;
+    padding: 15px 20px;
+    border-radius: 7px;
+}
+
+.intro-btn:link, .intro-btn:visited {
+    text-decoration: none;
+    background: #1769e0;
+    color: white;
+}
+
+.intro-btn:hover, .intro-btn:active {
+    opacity: 0.7;
+}
+
+
+/* core style 
+----------------------------------------------------
+*/
+.cloud {
+    position: relative;
+    background: white url('http://localhost:8000/bg-cloud.png');
+    background-repeat: repeat-x;
+    /* background-size: cover; */
+    height: 50vh;
+    margin-top: 80px;
+    animation: animate 100s linear infinite;
+}
+
+.masjid {
+    position: absolute;
+}
+
+@keyframes animate {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 10000px 0;
+    }
+}

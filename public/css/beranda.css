@@ -1,0 +1,238 @@
+/* font style
+----------------------------------------------------
+*/
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900');
+@import url('style.css');
+
+
+/* default override style 
+----------------------------------------------------
+*/
+body {
+    /*background: #f3f3f    3;*/
+    padding:0px;
+    margin:0px;
+}
+
+p {
+    margin: 0px;
+}
+
+
+/* navbar style 
+----------------------------------------------------
+*/
+.navbar-layout {
+   
+    padding-top: 13px;
+    background: white;
+}
+
+.nav-link {
+    font-family: 'Circular Std Book';
+    color: black;
+    margin: 0px 0px 0px 13px;
+}
+
+/*/*
+/* intro style
+----------------------------------------------------
+*/
+/*.intro {
+    background: white;
+    padding-top: 270px;
+    padding-bottom: 150px;
+    text-align: center;
+}
+
+.intro-title {
+    font-family: 'Circular Std Bold';
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.intro-desc {
+    font-family: 'Roboto';
+    font-weight: 300;
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: grey;
+}
+
+.intro-btn {
+    font-family: 'Circular Std Bold';
+    font-size: 20px;
+    margin: 25px 0px 50px 0px;
+    padding: 15px 20px;
+    border-radius: 7px;
+}
+
+.intro-btn:link, .intro-btn:visited {
+    text-decoration: none;
+    background: #1769e0;
+    color: white;
+}
+
+.intro-btn:hover, .intro-btn:active {
+    opacity: 0.7;
+}*/
+/*/
+
+/* card style
+----------------------------------------------------
+*/
+.card {
+    border: none;
+    margin-bottom: 15px;
+    box-shadow: 0px 1px 2px #e4e4e4;
+}
+
+.card a {
+    text-decoration: none;
+    color: black;
+}
+
+.card-body {
+    padding:20px;
+}
+.card-header {
+    background: none; 
+}
+
+.card-footer{
+    background: none;
+}
+
+
+/* carousel style
+----------------------------------------------------
+*/
+.carousel {
+    padding: 60px 0px 60px 0px;
+    background: #ebebeb;
+}
+
+.img-thumbnail {
+    border: none;
+}
+
+.popular {
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 3px;
+    background: #ff6961;
+    color: white;
+    margin: 0px 10px 15px 0px; 
+    padding: 8px;
+    display: inline-block;
+}
+
+.carousel-title {
+    font-family: 'Roboto';
+    font-weight: 700;
+    font-size: 25px;
+}
+
+.img-profile {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 15px
+}
+
+.name-profile {
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.major-profile {
+    font-family: 'Roboto';
+    font-weight: 300;
+    font-size: 13px;
+}
+
+.carousel-statistic {
+    font-size: 20px;
+}
+
+
+/* content style
+----------------------------------------------------
+*/  
+.content-header {
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 13px;   
+}
+
+.content-date {
+    font-weight: 400;
+    background: #77cba4;
+    color: white;
+    border-radius: 3px;
+    margin-right: 10px;
+    padding: 5px;
+}
+
+.content-title {
+    font-family: 'Roboto';
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.img-thumbnail-content {
+    border: none;
+    padding: 20px;
+}
+
+
+/* load bar style
+----------------------------------------------------
+*/
+.loadmore {
+    text-align: center;
+    font-family: 'Circular Std Medium'; 
+    font-size: 18px;
+    background: white;
+    color: black;
+    margin: 0px; 
+    padding: 10px 0px 10px 0px;
+    box-shadow: 0px 1px 2px #e4e4e4;
+}
+
+
+/* quote style
+----------------------------------------------------
+*/
+.quote {
+    background: #fafafa;
+    margin-top: 50px;
+    padding-top: 60px;   
+    height: 250px;
+}
+
+
+/* footer style
+----------------------------------------------------
+*/
+.footer {
+    background: white;
+    margin-top: 50px;
+    padding-top: 60px;   
+    height: 250px;
+}
+
+.footer-link {
+    font-family: 'Roboto';
+    font-weight: 300;
+    font-size: 15px;
+    margin: 0px 10px 0px 10px;
+}
+
+.footer-copyright {
+    font-family: 'Roboto';
+    font-weight: 300;
+    font-size: 15px;
+    color: grey;
+}
