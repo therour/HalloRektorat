@@ -1,0 +1,84 @@
+/* font style
+----------------------------------------------------
+*/
+    @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900');
+    @import url('style.css');
+
+
+/* override default style 
+----------------------------------------------------
+*/
+    p {
+        margin: 0px;
+    }
+
+
+/* content style 
+----------------------------------------------------
+*/
+    .bg {
+        background: #1769e0;
+        /*height: 678px;*/
+        height: 100%;
+        padding: 0px 70px 0px 70px;
+    }
+
+    .header {
+        text-align: center;
+        font-family: 'Circular Std Bold';
+        font-size: 30px;
+        color: white;
+        padding-top: 40px;
+    }
+
+    .header-desc {
+        text-align: center;
+        font-family: 'Circular Std Medium';
+        font-size: 23px;
+        color: white;
+        padding-top: 10px;
+        margin-bottom: 50px;
+    }
+
+    .title {
+        text-align: center;
+        font-family: 'Circular Std Book';
+        font-size: 17px;
+        color: white;
+        margin-bottom: 10px;
+    }
+/*
+    .form-control {
+        border: none;
+        margin-bottom: 20px;
+    }*/
+
+    .form-check {
+        margin-top: 40px;
+    }
+
+    .btn-custom {
+        font-family: 'Circular Std Bold';
+        margin-top: 15px;
+        width: 100%;
+        background: none;
+        border: 2px solid white;
+        color: white;
+    }
+
+    .btn-custom:hover {
+        text-decoration:underline;
+        color:white;
+    }
+
+    hr {
+        margin: 40px 0px 40px 0px;
+        background: white;
+    }
+
+    .no-account {
+        text-align: center;
+        font-family: 'Circular Std Book';
+        font-size: 15px;
+        color: white;
+    }        

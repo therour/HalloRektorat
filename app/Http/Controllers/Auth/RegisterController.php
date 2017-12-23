@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\User;
+use App\Jurusan;
+use App\Biodata;
 
 class RegisterController extends Controller
 {
@@ -27,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/Biodata';
 
     /**
      * Create a new controller instance.
@@ -48,12 +50,15 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
+            'fullname' => 'required|string|max:255',
             'name' => 'required|string|max:255',
+            'nim' => 'required|numeric|digits:8',
+            'jurusan_id' => 'required|numeric',
+            'new-username' => 'required|string|max:50|unique:users,username',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
-
     /**
      * Create a new user instance after a valid registration.
      *
@@ -62,10 +67,24 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        return Biodata::create([
+            'fullname' => $data['name'],
+        ])->user()->create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
     }
+
+    /**
+     * Registration Form
+     */
+    // public function showRegistrationForm()
+    // {
+    //     $jurusans = Jurusan::all();
+    //     return view('auth.login', [
+    //         'jurusans' => $jurusans ,
+    //         'isLoginPage' => FALSE ,
+    //     ]);
+    // }
 }
