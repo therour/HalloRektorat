@@ -23,6 +23,33 @@
     <div id="app">
         @include('layouts.navbar')
         @yield('content')
+        <!-- footer -->
+        <div class="footer">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-sm-12 text-center">
+                        <img src="{{ asset('logo.png') }}" style="width: 50px; margin-right: 20px;">
+                        <img src="{{ asset('logo3.png') }}" style="width: 200px;">
+                    </div>
+                </div>
+                <div class="row justify-content-center" style="margin-top: 20px;">
+                    <div class="col-sm-12 text-center">
+                        <a class="footer-link" href="#"> Home </a>
+                        <a class="footer-link" href="#"> Tentang Kami </a>
+                        <a class="footer-link" href="#"> Kontak </a>
+                        <a class="footer-link" href="#"> FAQ </a>
+                    </div>
+                </div>
+                <div class="row justify-content-center" style="margin-top: 10px;">
+                    <div class="col-sm-12 text-center">
+                       <p class="footer-copyright">
+                           &copy; 2017 HalloRektorat All rights reserved. Made with First Blood.
+                       </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <!-- Scripts -->

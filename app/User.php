@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Biodata;
+use App\Saran;
+
 
 class User extends Authenticatable
 {
@@ -31,5 +33,10 @@ class User extends Authenticatable
     public function biodata()
     {
         return $this->belongsTo(Biodata::class);
+    }
+
+    public function sarans()
+    {
+        return $this->hasMany(Saran::class);
     }
 }

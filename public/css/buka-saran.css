@@ -1,0 +1,194 @@
+/* font style
+----------------------------------------------------
+*/
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900');
+@import url('style.css');
+
+
+/* default override style 
+----------------------------------------------------
+*/
+body {
+    background: #f3f3f3;
+}
+
+p {
+    margin: 0px;
+}
+
+
+/* navbar style 
+----------------------------------------------------
+*/
+.navbar-layout {
+   
+    padding-top: 13px;
+    background: white;
+}
+
+.nav-link {
+    font-family: 'Circular Std Book';
+    color: black;
+    margin: 0px 0px 0px 13px;
+}
+
+
+/* card style 
+----------------------------------------------------
+*/
+.card {
+    border: none;
+    border-radius: 3px;
+    margin-bottom: 15px;
+    padding: 10px; 
+    box-shadow: 1px 1px 2px #e4e4e4;
+}
+
+.card-header {
+    background: none;
+    border: none;
+}
+
+.card .card-body h4 {
+    font-size: 14px;
+    font-weight: 400;
+    color: white;
+    margin: 0px 10px 15px 0px; 
+    padding: 8px;
+    display: inline-block;
+}
+
+.card .card-body h3 {
+    font-family: 'Roboto';
+    font-size: 20px;
+    font-weight: 700;
+}
+
+
+/* content-left style 
+----------------------------------------------------
+*/
+
+.img-profile {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px
+}
+
+.img-comment {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    margin-right: 15px
+}
+
+.name-profile {
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.major-profile {
+    font-family: 'Roboto';
+    font-weight: 300;
+    font-size: 13px;
+}
+
+.title {
+    font-family: 'Circular Std Bold';
+    font-size: 40px;
+    margin-top: 5px;
+}
+
+.send-to {
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 15px;
+    margin-top: 20px;
+}
+
+.box-to {
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 15px;
+    background: #779ecb;
+    color: white;
+    border-radius: 3px;
+    padding: 4px;
+    margin-right: 10px;
+}
+
+.tanggapan-header {
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 15px;
+    background: #ff6961;
+    color: white;
+    border-radius: 4px;
+    padding: 8px;
+    display: inline-block;
+}
+
+
+/* content-right style 
+----------------------------------------------------
+*/
+.share {
+    font-family: 'Circular Std Book';
+    font-weight: 400;
+    font-size: 15px;
+    color: black;
+    margin-left: 10px;
+    display: inline-block
+}
+
+.support-box {
+    text-align: center;
+    font-family: 'Circular Std Medium';
+    font-weight: 400;
+    font-size: 20px;
+    background: #4477b2;
+    color: white;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+/* load bar style
+----------------------------------------------------
+*/
+.loadmore {
+    text-align: center;
+    font-family: 'Circular Std Medium'; 
+    font-size: 18px;
+    background: white;
+    color: black;
+    margin: 0px; 
+    padding: 10px 0px 10px 0px;
+    box-shadow: 0px 1px 2px #e4e4e4;
+}
+
+
+/* footer style
+----------------------------------------------------
+*/
+.footer {
+    background: white;
+    margin-top: 50px;
+    padding-top: 60px;   
+    height: 250px;
+}
+
+.footer-link {
+    font-family: 'Roboto';
+    font-weight: 300;
+    font-size: 15px;
+    margin: 0px 10px 0px 10px;
+}
+
+.footer-copyright {
+    font-family: 'Roboto';
+    font-weight: 300;
+    font-size: 15px;
+    color: grey;
+}
