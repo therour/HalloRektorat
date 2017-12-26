@@ -49,4 +49,14 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Saran::class, 'supports');
     }
+
+    public function imageProfile()
+    {
+        if (\File::Exists('img/profile/'.$this->attributes['id'].'.jpg')){
+            return asset('img/profile/'.$this->attributes['id'].'.jpg');
+        }
+        else{
+            return asset('img/profile/default.jpg');
+        }        
+    }
 }

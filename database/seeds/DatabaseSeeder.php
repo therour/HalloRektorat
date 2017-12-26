@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
 
         $faker = Faker::create();
         $listParent = [
-            'Rektorat', 'Fakultas'
+            'Rektorat', 'Fakultas', 'Jurusan'
         ];
 
         $listFakultas = [
@@ -46,7 +46,7 @@ class DatabaseSeeder extends Seeder
             'Fakultas Teknik Industri' ,
             'Fakultas Teknik Sipil dan Perancangan',
             'Fakultas Ilmu Agama Islam' ,
-            'Fakutlas Kedokteran',
+            'Fakultas Kedokteran',
             'Fakultas Ekonomi', 
             'Fakultas Hukum',            
         ];
@@ -67,7 +67,6 @@ class DatabaseSeeder extends Seeder
                 'parent_id' => 1 ,
             ]);
         }
-
         // Fakultas
         foreach ($listFakultas as $fakultas) {
             DB::table('targets')->insert([
@@ -80,7 +79,7 @@ class DatabaseSeeder extends Seeder
         foreach ($listJurusan as $jurusan) {
             DB::table('targets')->insert([
                 'name' => $jurusan ,
-                'parent_id' => rand(3,10) ,
+                'parent_id' => 3 ,
             ]);
         }
     }

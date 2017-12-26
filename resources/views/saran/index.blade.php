@@ -48,7 +48,7 @@
                             <div class="media" style="">
                                 <div class="media-left media-middle">
                                     <a href="{{ url('/profile/'.$saran->user->id) }}">
-                                        <img class="img-profile" src="{{ asset('profile.jpg') }}">
+                                        <img class="img-profile" src="{{ $saran->user->imageProfile() }}">
                                     </a>
                                 </div>
                                 <div class="media-body">

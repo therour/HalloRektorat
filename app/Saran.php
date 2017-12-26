@@ -27,6 +27,11 @@ class Saran extends Model
             $builder->orderBy('created_at','desc');
         });
     }
+
+    public function getContentAttribute($value)
+    {
+        return nl2br(e($value));
+    }
     public function user()
     {
     	return $this->belongsTo(User::class);

@@ -17,7 +17,7 @@ class CreateSaransTable extends Migration
             $table->increments('id');
             $table->string('title', 150);
             $table->text('content');
-            $table->string('image_path');
+            $table->string('image_path')->nullable();
             $table->integer('target_id')->unsigned()->index()->nullable();
             $table->integer('user_id')->unsigned()->index();
             $table->enum('status', ['send', 'noticed', 'responded', 'done'])->default('send');

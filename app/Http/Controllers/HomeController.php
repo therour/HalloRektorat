@@ -26,7 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         $sarans = Saran::where('is_public', 'public')->orderBy('created_at','desc')->paginate(5);
-        $carousels = Saran::withCount('supports')->orderBy('supports_count', 'desc')->get(2);
+        $carousels = Saran::withCount('supports')->orderBy('supports_count', 'desc')->take(4)->get();
         return view('home', [
             'sarans' => $sarans ,
             'carousels' => $carousels ,

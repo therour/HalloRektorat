@@ -22,7 +22,7 @@
             <div class="card">
                 <div class="card-header" style="padding: 20px;">
                     <div class="media media-middle">
-                        <a href="#"><img class="img-profile" src="{{ asset('profile.jpg') }}"></a>
+                        <a href="#"><img class="img-profile" src="{{ $saran->user->imageProfile() }}"></a>
                         <div class="media-body">
                             <p class="name-profile"> {{ $saran->user->biodata->fullname }} </p>
                             <p class="major-profile"> {{ $saran->user->biodata->jurusan->nama }} | {{ $saran->created_at->formatLocalized('%A %d %B %Y %H:%M') }}</p>
@@ -97,7 +97,7 @@
             @foreach ($comments as $comment)
             <div class="media" style="margin-top: 50px">
                 <a href="{{ route('profile', ['user' => $comment->user->id]) }}">
-                    <img class="img-comment" src="{{url('profile.jpg')}}" alt="">
+                    <img class="img-comment" src="{{ $comment->user->imageProfile() }}" alt="">
                 </a>
                 <div class="media-body">
                     <h5 class="name-profile"> {{ $comment->user->biodata->fullname }} </h5>

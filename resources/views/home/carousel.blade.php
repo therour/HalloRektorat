@@ -19,7 +19,7 @@
                                         <h4 class="carousel-title"> {{ $saran->title }}  </h4>
                                     </a>
                                         <p>
-                                            {{ $saran->content }}
+                                            {!! str_limit($saran->content, 250, ' Read More...') !!} 
                                         </p>
                                 </div>
                             </div>
@@ -31,7 +31,7 @@
                                 <div class="media">
                                     <div class="media-left media-middle">
                                         <a href="{{ url('/profile/'.$saran->user->id) }}">
-                                            <img class="img-profile" src="{{url('profile.jpg')}}">
+                                            <img class="img-profile" src="{{ $saran->user->imageProfile() }}">
                                         </a>
                                     </div>
                                     <div class="media-body">    

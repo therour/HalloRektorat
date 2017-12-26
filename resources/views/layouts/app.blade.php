@@ -18,6 +18,16 @@
     @yield('css')
 
     <style>
+     .navbar-layout {
+        padding-top: 13px;
+        background: white;
+    }
+
+    .nav-link {
+        font-family: 'Circular Std Book';
+        color: black;
+        margin: 0px 0px 0px 13px;
+    }
         /* footer style
 ----------------------------------------------------
 */
@@ -77,7 +87,8 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/jquery-3.1.1.slim.min.js') }}"></script>
+    <!-- <script src="{{ asset('js/jquery-3.1.1.slim.min.js') }}"></script> -->
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/tether.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     @yield('js')

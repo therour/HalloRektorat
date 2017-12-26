@@ -16,7 +16,7 @@
         <!-- main col left -->
         <div class="col-md-3">
             <div class="card">
-                <img src="{{url('profile.jpg')}}" class="img-fluid">
+                <img src="{{ $user->imageProfile() }}" class="img-fluid">
                 <div class="card-body">
                     <h1 class="id-name"> {{ $user->biodata->fullname }} </h1>
                     <h2 class="id-info"> {{ $user->biodata->nim }} </h2> 

@@ -51,17 +51,19 @@ class SaranController extends Controller
                 'content' => $request->content ,
         ]);
 
+
         if ($request->hasFile('image')) {
             $request->validate([
-                'image' => 'image|mimes:jpg,jpeg,png|max:2048' ,
+                'image' => 'image|mimes:jpg,jpeg,png,bmp|max:2048' ,
             ]);
 
             $namaImage = $saran->id.'.'.$request->image->getClientOriginalExtension();
             $request->image->move(public_path('img/sarans'), $namaImage);
             $image_path = asset('img/sarans/'.$namaImage);
         } else {
-            $image_path = asset('parkir.jpg');
+            $image_path = asset('img/profile/default.jpg');
         }
+
         $saran->image_path = $image_path;
         $saran->save();
 
