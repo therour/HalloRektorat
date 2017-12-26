@@ -15,9 +15,33 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/font-awesome/css/font-awesome.min.css') }}">
-
-
     @yield('css')
+
+    <style>
+        /* footer style
+----------------------------------------------------
+*/
+    .footer {
+        background: white;
+        margin-top: 50px;
+        padding-top: 60px;   
+        height: 250px;
+    }
+
+    .footer-link {
+        font-family: 'Roboto';
+        font-weight: 300;
+        font-size: 15px;
+        margin: 0px 10px 0px 10px;
+    }
+
+    .footer-copyright {
+        font-family: 'Roboto';
+        font-weight: 300;
+        font-size: 15px;
+        color: grey;
+    }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -34,10 +58,10 @@
                 </div>
                 <div class="row justify-content-center" style="margin-top: 20px;">
                     <div class="col-sm-12 text-center">
-                        <a class="footer-link" href="#"> Home </a>
-                        <a class="footer-link" href="#"> Tentang Kami </a>
-                        <a class="footer-link" href="#"> Kontak </a>
-                        <a class="footer-link" href="#"> FAQ </a>
+                        <a class="footer-link" href="{{ route('home') }}"> Home </a>
+                        <a class="footer-link" href="{{ url('/about') }}"> Tentang Kami </a>
+                        <a class="footer-link" href="{{ url('/kontak') }}"> Kontak </a>
+                        <a class="footer-link" href="{{ url('/faq') }}"> FAQ </a>
                     </div>
                 </div>
                 <div class="row justify-content-center" style="margin-top: 10px;">

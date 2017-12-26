@@ -15,8 +15,9 @@ class CreateTargetsTable extends Migration
     {
         Schema::create('targets', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('sub_target_id')->nullable()->default(null);
+            $table->integer('parent_id')->nullable()->default(null);
             $table->string('name', 100);
+            $table->string('singkatan',10)->nullable();
         });
     }
 

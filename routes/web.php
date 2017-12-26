@@ -10,19 +10,22 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-// Route::get('/cars', 'CarController@dashboard')->name('cars');
-
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
+
+
+// Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/saran', 'SaranController@index')->name('telusur'); // showAll
 Route::get('/kirim', 'SaranController@add')->name('kirimsaran');// create
+Route::post('/kirim', 'SaranController@create');
 Route::get('/saran/{saran}', 'SaranController@show');			// show
-Route::get('/saran/coba', 'SaranController@coba');
+Route::post('/komentar', 'SaranController@commentThis');
+Route::post('/support', 'SaranController@supportThis');
+Route::get('/saran/coba', 'SaranController@coba');	
+
+// Route::get('/profile/{user}', 'ProfileController@show')->name('profile');		
+Route::get('/profile/{user}', function (\App\User $user) {
+	return view('profile.show', ['user' => $user]);
+})->name('profile');		

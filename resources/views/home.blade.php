@@ -3,7 +3,7 @@
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/beranda.css') }}">
     <!-- <link rel="stylesheet" href="{{ asset('css/coba.css') }}"> -->
-    <style>
+<style>
     body {
         background:#ebebeb;
     }
@@ -76,7 +76,18 @@
         background-position: 10000px 0;
     }
 }
-    </style>
+
+/* button support
+----------------------------------------------------------
+*/
+
+.support, .supported {
+    padding:0px;
+}
+.supported {
+    color:red;
+}
+</style>
 @endsection
 
 @section('content')
@@ -106,48 +117,58 @@
 
 <!-- POST -->
 <div class="container" style="background:#ebebeb;">
-    @for ($i =0; $i < 4; $i++)
+    @foreach ($sarans as $saran)
     <div class="col-md-8" style="margin-top: 30px; padding: 0px;">
         <div class="card">
             <div class="card-header">
                 <div class="content-header">
                     <span class="content-date"> Dikirim </span> 
-                    Kamis 24 Agustus 2017
+                    <a href="{{ url('/saran/'.$saran->id) }}">
+                        {{ $saran->created_at->formatLocalized('%A %d %B %Y %H:%M') }}
+                    </a>
                 </div>
             </div>
-            <a href="#">
                 <div class="row">
                     <div class="col-sm-12 col-md-6">
                         <div class="card-body">
-                            <h4 class="content-title"> Perluas parkiran FTI pak bu, sudah tidak muat lagi ini </h4>
+                            <a href="{{ url('/saran/'.$saran->id) }}">
+                                <h4 class="content-title"> {{ $saran->title }} </h4>
+                            </a>
                             <p>
-                                This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. 
+                                {{ $saran->content }} 
                             </p>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-6">
-                        <img class="card-img-top img-thumbnail-content" src="{{asset('parkir.jpg')}}" alt="Card image cap" width="100%" height="100%">
+                        <img class="card-img-top img-thumbnail-content" src="{{ $saran->image_path }}" alt="Card image cap" width="100%" height="100%">
                     </div>
                 </div>
-            </a>
             <div class="card-footer">
                 <div class="row">
                     <div class="col col-md-6">
                         <div class="media">
                             <div class="media-left media-middle">
-                                <img class="img-profile" src="{{asset('profile.jpg')}}">
+                                <a href="{{ url('/profile/'.$saran->user->id) }}">
+                                    <img class="img-profile" src="{{asset('profile.jpg')}}">
+                                </a>
                             </div>
                             <div class="media-body">
-                                <p class="name-profile"> Patria Annisa </p>
-                                <p class="d-none d-md-block major-profile"> Pendidikan Bahasa Inggris</p>
+                                <a href="{{ url('/profile/'.$saran->user->id) }}">
+                                    <p class="name-profile"> {{ $saran->user->biodata->fullname }} </p>
+                                </a>
+                                <p class="d-none d-md-block major-profile"> {{ $saran->user->biodata->jurusan->nama }}</p>
                             </div>
                         </div>
                     </div>
                     <div class="col col-md-3">
                         <div class="media">
-                            <div class="media-body" >   
-                                <p class="name-profile"> <i class="fa fa-heart-o carousel-statistic" aria-hidden="true"></i> 1000 </p>
-                                <p class="d-none d-md-block major-profile"> Pendukung </p>
+                            <div class="media-body">
+                                <form action="{{ url('/support') }}" method="POST">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="saran_id" value="{{ $saran->id }}">
+                                    <button type="submit" class="btn btn-link {{ $saran->isSupported() ? 'supported' : 'support' }}"><i class="fa fa-heart{{ $saran->isSupported() ? '' : '-o'}} carousel-statistic" aria-hidden="true"></i></button> {{ count($saran->supports) }}
+                                </form>
+                                <p class="d-none d-md-block major-profile">Pendukung </p>
                             </div>
                         </div>
                     </div>
@@ -157,7 +178,7 @@
                                 <!-- Singkatan  -->
                                 <p class="d-block d-md-none name-profile"> <i class="fa fa-envelope-o carousel-statistic" aria-hidden="true"></i> FMIPA </p>
                                 <!-- Nama Panjang -->
-                                <p class="d-none d-md-block name-profile"> <i class="fa fa-envelope-o carousel-statistic" aria-hidden="true"></i> Fakultas Matematika dan Ilmu Pengetahuan Alam </p>
+                                <p class="d-none d-md-block name-profile"> <i class="fa fa-envelope-o carousel-statistic" aria-hidden="true"></i> {{ $saran->target->name }} </p>
                                 <p class="d-none d-md-block major-profile"> Ditujukan </p>
                             </div>
                         </div>
@@ -166,46 +187,14 @@
             </div>
         </div>
     </div>
-    @endfor
+    @endforeach
 
     <div class="container">
         <div class="col-md-8" style="padding: 0px;"> 
-            <a href="#">
-                <div class="loadmore"> 
-                    Load More  
-                </div>
-            </a>
+            <center>{{ $sarans->links() }}</center>
         </div>    
     </div>
 </div>
-
-<!-- footer -->
-<div class="footer">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-sm-12 text-center">
-                <img src="{{ asset('logo.png') }}" style="width: 50px; margin-right: 20px;">
-                <img src="{{ asset('logo3.png') }}" style="width: 200px;">
-            </div>
-        </div>
-        <div class="row justify-content-center" style="margin-top: 20px;">
-            <div class="col-sm-12 text-center">
-                <a class="footer-link" href="#"> Home </a>
-                <a class="footer-link" href="#"> Tentang Kami </a>
-                <a class="footer-link" href="#"> Kontak </a>
-                <a class="footer-link" href="#"> FAQ </a>
-            </div>
-        </div>
-        <div class="row justify-content-center" style="margin-top: 10px;">
-            <div class="col-sm-12 text-center">
-               <p class="footer-copyright">
-                   &copy; 2017 HalloRektorat All rights reserved. Made with blood and tears.
-               </p>
-            </div>
-        </div>
-    </div>
-</div>
-
 
 @endsection
 

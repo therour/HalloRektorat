@@ -39,4 +39,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Saran::class);
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function supports()
+    {
+        return $this->belongsToMany(Saran::class, 'supports');
+    }
 }

@@ -11,4 +11,5 @@ class Jurusan extends Model
     {
     	return $this->hasMany(Biodata::class);
     }
+
 }

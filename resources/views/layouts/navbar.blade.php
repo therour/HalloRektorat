@@ -3,16 +3,16 @@
         <span class="navbar-toggler-ico fa fa-bars"></span>
     </button>
     <div class="container">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="{{ route('home') }}">
         	<img src="{{ asset('logo3.png') }}" alt="{{ config('app.name', 'Hallo') }}" style="width:150px; margin-bottom:7px;">       	
         </a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Kirim Saran<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{ route('kirimsaran') }}">Kirim Saran<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Beranda</a>
+                    <a class="nav-link" href="{{ route('telusur') }}">Telusur</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Tentang</a>
@@ -43,7 +43,7 @@
                         {{ Auth::user()->name }}
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Profil</a>
+                        <a class="dropdown-item" href="{{ url('/profile/'.Auth::user()->id)}}">Profil</a>
                         <a class="dropdown-item" href="#">Saranku</a>
                     </div>
                 </li>
