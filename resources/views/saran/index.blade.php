@@ -20,25 +20,26 @@
                     Urutkan Berdasar
                 </button>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Popularity</a>
-                    <a class="dropdown-item" href="#">Newest</a>
-                    <a class="dropdown-item" href="#">Latest</a>
+                    <a class="dropdown-item" href="{{ url('/sarans/populer') }}">popularitas</a>
+                    <a class="dropdown-item" href="{{ url('/sarans/terbaru') }}">Terbaru</a>
+                    <a class="dropdown-item" href="{{ url('/sarans/komentar') }}">Komentar terbanyak</a>
                 </div>
             </div>
         </div>
     </div>
     <div class="row justify-content-between">
+        @if (count($sarans) > 0)
         @foreach ($sarans as $saran)
         <!-- START CARD -->
-        <div class="col-sm-12 col-md-4">
+        <div class="col-sm-12 col-md-4 col-xl-3">
             <div class="card">
                 <a href="{{ url('/saran/'.$saran->id) }}">
-                    <div class="card-body">
-                        <div>
-                            <img class="card-img-top img-thumbnail" src="{{ $saran->image_path }}" alt="Card image cap" style="padding: 0px">
+                    <div class="card-body" style="height:280px">
+                        <div style="height:200px">
+                            <img class="card-img-top img-thumbnail" src="{{ $saran->image_path }}" alt="Card image cap" style="padding: 0px; width:100%; height:100%; object-fit:contain;">
                         </div>
                         <small class="text-muted"> {{ $saran->created_at->diffForHumans() }} </small>
-                        <h1 class="title"> {{ $saran->title }} </h1>
+                        <h1 class="title" title=""> {{ str_limit($saran->title, 50, '...') }} </h1>
                     </div>
                 </a>
                 <div class="card-footer">
@@ -85,6 +86,12 @@
         </div>
         <!-- END CARD -->
         @endforeach
+        @else
+        <div class="col">
+            
+        <center><h5>Hasil pencarian tidak menemukan kata "{{ $_GET['cari'] }}"</h5></center>
+        </div>
+        @endif
 
         {{ $sarans->links() }}
     </div>

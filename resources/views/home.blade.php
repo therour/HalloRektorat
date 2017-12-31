@@ -104,7 +104,7 @@
             <h2 class="intro-desc"> Sekarang kamu tahu kepada siapa harus menyampaikan permasalahan UII. Kirim saranmu. </h2>
             <h2 class="intro-desc"> Jadilah solusi untuk UII. </h2>
             <div class="row"> 
-                <a class="intro-btn ml-auto mr-auto" href="#"> 
+                <a class="intro-btn ml-auto mr-auto" href="#" data-toggle="modal" data-target="#kirimsaran"> 
                     Kirim Saran <i class="fa fa-chevron-right align-center" aria-hidden="true" style="margin-left: 20px;"> </i> 
                 </a> 
             </div>
@@ -176,7 +176,7 @@
                         <div class="media">
                             <div class="media-body">   
                                 <!-- Singkatan  -->
-                                <p class="d-block d-md-none name-profile"> <i class="fa fa-envelope-o carousel-statistic" aria-hidden="true"></i> FMIPA </p>
+                                <p class="d-block d-md-none name-profile"> <i class="fa fa-envelope-o carousel-statistic" aria-hidden="true"></i> {{ $saran->target->singkatan() }} </p>
                                 <!-- Nama Panjang -->
                                 <p class="d-none d-md-block name-profile"> <i class="fa fa-envelope-o carousel-statistic" aria-hidden="true"></i> {{ $saran->target->name }} </p>
                                 <p class="d-none d-md-block major-profile"> Ditujukan </p>

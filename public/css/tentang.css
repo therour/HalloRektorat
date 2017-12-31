@@ -1,0 +1,93 @@
+/* font style
+----------------------------------------------------
+*/
+    @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900');
+    @import url('style.css');
+
+
+/* override default style 
+----------------------------------------------------
+*/
+    body {
+        background: white;
+    }
+
+/* navbar style 
+----------------------------------------------------
+*/
+    .navbar-layout {
+        
+        padding-top: 13px;
+        background: white;
+    }
+
+    .nav-link {
+        font-family: 'Circular Std Book';
+        color: black;
+        margin: 0px 0px 0px 13px;
+    }
+
+
+/* content style 
+----------------------------------------------------
+*/
+    .head-brand {
+        text-align: end;
+        font-family: 'Circular Std Bold';
+        font-size: 70px;
+        color: #1769e0;
+        margin-bottom: -20px;
+    }
+
+    .desc-brand {
+        text-align: justify;
+        font-family: 'Roboto';
+        font-weight: 400px;
+        font-size: 18px;
+        margin-top: 50px;
+        margin-bottom: 25px;
+    }
+
+    .img-profile {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        margin-right: 25px
+    }
+
+    .name-profile {
+        font-family: 'Roboto';
+        font-weight: 700;
+        font-size: 18px;
+    }
+
+    .desc-profile {
+        font-family: 'Roboto';
+        font-weight: 400;
+        font-size: 15px;
+        margin: 0px;
+    }
+
+/* footer style
+----------------------------------------------------
+*/
+    .footer {
+        background: white;
+        margin-top: 50px;
+        padding-top: 60px;   
+        height: 250px;
+    }
+
+    .footer-link {
+        font-family: 'Roboto';
+        font-weight: 300;
+        font-size: 15px;
+        margin: 0px 10px 0px 10px;
+    }
+
+    .footer-copyright {
+        font-family: 'Roboto';
+        font-weight: 300;
+        font-size: 15px;
+        color: grey;
+    }

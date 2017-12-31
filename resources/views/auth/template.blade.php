@@ -14,7 +14,6 @@
 	<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/font-awesome/css/font-awesome.min.css') }}">
 
-
 	@yield('css')
 </head>
 <body>

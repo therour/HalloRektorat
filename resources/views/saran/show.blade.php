@@ -36,7 +36,9 @@
                     </h2>
                 </div>
                 <div style="margin-top: 20px">
-                  <img src="{{ $saran->image_path }}" class="img-fluid">
+                    @if ($saran->image_path != asset('img/sarans/no-image.png'))
+                        <img src="{{ $saran->image_path }}" class="img-fluid">
+                    @endif
                 </div>
                 <div class="card-body content"> 
                     <p>
@@ -75,7 +77,11 @@
                     <p class="tanggapan-header"> Tanggapan </p> 
                 </div>
                 <div class="card-body">
-                    <p> {{ $saran->tanggapan()->first()->content }} </p>
+                    <blockquote class="blockquote">
+                        <p class="mb-0">
+                            {{ $saran->tanggapan()->first()->content }}
+                        </p>
+                    </blockquote>
                 </div>
             </div>
             @endif
@@ -138,20 +144,21 @@
                 </a>
             </div>
             <hr>
-            <div> 
+            <!-- <div> 
                 <a href="#" onclick="alert('coming soon');">
                     <i class="fa fa-commenting" aria-hidden="true" style="font-size: 30px; color: #00c300"> 
                         <p class="share"> Bagikan di linimasa </p> 
                     </i>
                 </a>
             </div>
-            <hr>
-            <div> 
-                <a href="#" onclick="alert('coming soon');">
-                    <i class="fa fa-link" aria-hidden="true" style="font-size: 30px; color: black"> 
+            <hr> -->
+            <div id="copyUrl"> 
+                <a href="#">
+                    <i class="fa fa-link" aria-hidden="true" style="font-size: 30px; color: black"></i>
                         <p class="share"> Copy link  </p>
-                    </i>
+                    <!-- </i> -->
                 </a>
+                <input type="text" value="{{ Request::fullUrl() }}" class="form-control form-control-sm" readonly>
             </div>
             <hr>
              <form action="{{ url('/support') }}" method="POST">
@@ -164,8 +171,22 @@
         </div>
     </div>
 </div>
-
 @endsection
 
 @section('js')
+<script>
+    $(document).ready(function () {
+        $("#copyUrl").click(function () {
+            $(this).children("input").select();
+            document.execCommand("Copy");
+            swal({
+              position: 'top-right',
+              // type: 'success',
+              text: 'Url telah disalin',
+              showConfirmButton: false,
+              timer: 1000
+            });
+        });
+    });
+</script>
 @endsection

@@ -13,11 +13,18 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <!-- <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"> -->
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+
     <link rel="stylesheet" href="{{ asset('css/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/kirim-saran-baru.css') }}">
+
     @yield('css')
 
     <style>
+    body {
+        overflow-y:scroll;
+    }
      .navbar-layout {
         padding-top: 13px;
         background: white;
@@ -28,7 +35,7 @@
         color: black;
         margin: 0px 0px 0px 13px;
     }
-        /* footer style
+/* footer style
 ----------------------------------------------------
 */
     .footer {
@@ -57,6 +64,8 @@
     <div id="app">
         @include('layouts.navbar')
         @yield('content')
+
+        
         <!-- footer -->
         <div class="footer">
             <div class="container">
@@ -83,14 +92,48 @@
                 </div>
             </div>
         </div>
+        @include('layouts.kirimsaran')
 
     </div>
 
     <!-- Scripts -->
     <!-- <script src="{{ asset('js/jquery-3.1.1.slim.min.js') }}"></script> -->
     <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <script src="{{ asset('js/tether.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <!-- <script src="{{ asset('js/tether.min.js') }}"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+
+    <!-- <script src="{{ asset('js/bootstrap.min.js') }}"></script> -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    <script src="{{ asset('js/kirim-saran.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/sweetalert2.js') }}"></script>
     @yield('js')
+    <script>        
+    $(document).ready(function () {
+
+    @if (session('success'))
+        swal({
+            title:"Berhasil!" ,
+            text :"{{ session('success') }}",
+            type :"success" 
+        });
+    @endif
+
+    @if (count($errors->all()) > 0)
+        swal({
+            title:"Gagal!", 
+            text :"{{ $errors->first() }}", 
+            type :"warning"
+        }
+        @if (count($errors->kirimsaran->all()) > 0)
+            ,function () {
+                $('#kirimsaran').modal('show');
+            }
+        @endif
+        );
+    @endif
+       
+    });
+
+    </script>
 </body>
 </html>

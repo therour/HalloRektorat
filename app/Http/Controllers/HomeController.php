@@ -15,7 +15,6 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        setLocale(LC_TIME,'IND');
     }
 
     /**
@@ -31,5 +30,10 @@ class HomeController extends Controller
             'sarans' => $sarans ,
             'carousels' => $carousels ,
         ]);
+    }
+
+    public function about()
+    {
+        return view('about');
     }
 }

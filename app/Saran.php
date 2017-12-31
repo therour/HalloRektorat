@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Carbon\Carbon;
 use App\User;
 use App\Comment;
 use App\Target;
@@ -22,6 +23,8 @@ class Saran extends Model
     protected static function boot()
     {
         parent::boot();
+        Carbon::setLocale('id');
+        setLocale(LC_TIME,'IND');
 
         static::addGlobalScope('saran', function (Builder $builder) {
             $builder->orderBy('created_at','desc');
@@ -32,6 +35,7 @@ class Saran extends Model
     {
         return nl2br(e($value));
     }
+
     public function user()
     {
     	return $this->belongsTo(User::class);
@@ -44,7 +48,7 @@ class Saran extends Model
 
     public function comments()
     {
-    	return $this->hasMany(Comment::class);
+    	return $this->hasMany(Comment::class)->orderBy('created_at','desc');
     }
 
     public function supports()
@@ -73,5 +77,10 @@ class Saran extends Model
                    \Illuminate\Support\Facades\Auth::user()->id : 0;
         $saran_id = $this->attributes['id'];
         return \DB::table('supports')->where('user_id', $user_id)->where('saran_id', $saran_id)->count() > 0;
+    }
+
+    public function isResponded()
+    {
+        return $this->attributes['status'] == 'responded';
     }
 }
