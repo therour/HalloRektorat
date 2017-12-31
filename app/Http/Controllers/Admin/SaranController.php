@@ -44,6 +44,8 @@ class SaranController extends Controller
         {
             return abort(404);
         }
+        $saran->comments()->delete();
+        $saran->supports()->detach();
         $saran->delete();
 
         return redirect()->back();

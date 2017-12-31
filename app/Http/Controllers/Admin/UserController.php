@@ -14,8 +14,18 @@ class UserController extends Controller
 
     public function index()
     {
+        if (isset($_GET['cari']) && !empty($_GET['cari'])) {
+            $cari = e($_GET['cari']);
+            $users = User::where('jabatan', 'user')
+                         ->where('name', 'LIKE', '%'.$cari.'%')
+                         ->orWhere('email', 'LIKE', '%'.$cari.'%')
+                         ->paginate(10);
+        } else {
+            $users = User::where('jabatan', 'user')->paginate(10);
+        }
+
     	return view('admin.users', [
-    		'users' => User::where('jabatan', 'user')->paginate(10)
+    		'users' => $users,
     	]);
     }
 }

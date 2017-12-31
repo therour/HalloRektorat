@@ -13,14 +13,22 @@
 	</div>
 	<div class="row">
 		<div class="col">
+			<div class="col-sm-5">
+			<form action="" class="form-inline" method="GET">
+				<div class="form-group">
+					<input class="form-control" placeholder="cari pengguna" type="text" name="cari">
+					<button type="submit" class="btn btn-secondary">Cari</button>
+				</div>
+			</form>
+			</div>
 			<table class="table table-light	 table-sm table-bordered table-hover">
 			<br>
 				<thead>
 					<tr>
-						<th rowspan="2">Name</th><th rowspan="2">Email</th><th colspan="3">Kontribusi</th>
+						<th rowspan="2">Name</th><th rowspan="2">Nim</th><th rowspan="2">Email</th><th colspan="3">Kontribusi</th>
 					</tr>
 					<tr>
-						<th><small>Saran</small></th><th><small>Komentar</small></th><th><small>Supports</small></th>
+						<th><small>Saran</small></th><th><small>Komentar</small></th><th><small>Dukungan</small></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -28,6 +36,9 @@
 					<tr>
 						<td>
 							<a href="{{ url('/profile/'.$user->id)}}" title="Link to Halaman Saran">{{ $user->name }}</a>
+						</td>
+						<td>
+							{{ $user->biodata->nim }}
 						</td>
 						<td>
 							{{ $user->email }}
