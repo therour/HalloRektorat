@@ -55,7 +55,7 @@ $(document).ready(function () {
         var datadump = '{"data":[{"name": " Gagal menyambungkan...", "id": 1}]}';
         var url = $('meta[name="base_url"]').attr('content');
         $.ajax({
-            url: url + "targets/" + pilihan, 
+            url: url + "/targets/" + pilihan, 
             success: function (response) {
                 var jsonTargets = JSON.parse(response).data
                 jsonTargets.forEach( function(item, index) {
