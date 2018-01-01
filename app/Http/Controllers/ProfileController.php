@@ -42,7 +42,7 @@ class ProfileController extends Controller
 
     	if ($request->hasFile('image')) {
     		$request->validate([
-    			'image' => 'image|mimes:jpg|max:2048'
+    			'image' => 'image|mimes:jpg,jpeg|max:2048'
     		]);
 
     		File::delete(public_path('img/profile').'/'.$user->id.'jpg');
