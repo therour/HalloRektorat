@@ -11,7 +11,11 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <!-- <a class="nav-link" href="{{-- route('kirimsaran') --}}">Kirim Saran</a> -->
+                    @if (Auth::user()->jabatan == 'admin')
+                    <a class="nav-link text-muted" title="Admin tidak bisa menambah saran">Kirim Saran</a>
+                    @else
                     <a class="nav-link" href="#" data-toggle="modal" data-target="#kirimsaran">Kirim Saran</a>
+                    @endif
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('telusur') }}">Telusur</a>

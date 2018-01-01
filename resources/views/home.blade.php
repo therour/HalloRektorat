@@ -104,9 +104,13 @@
             <h2 class="intro-desc"> Sekarang kamu tahu kepada siapa harus menyampaikan permasalahan UII. Kirim saranmu. </h2>
             <h2 class="intro-desc"> Jadilah solusi untuk UII. </h2>
             <div class="row"> 
-                <a class="intro-btn ml-auto mr-auto" href="#" data-toggle="modal" data-target="#kirimsaran"> 
-                    Kirim Saran <i class="fa fa-chevron-right align-center" aria-hidden="true" style="margin-left: 20px;"> </i> 
+                @if (Auth::user()->jabatan == 'admin')
+                <a class="btn btn-secondary btn-lg ml-auto mr-auto disabled" href="#">Kirim Saran <i class="fa fa-chevron-right"></i></a>
+                @else
+                <a class="btn btn-primary btn-lg ml-auto mr-auto" href="#" data-toggle="modal" data-target="#kirimsaran"> 
+                    Kirim Saran <i class="fa fa-chevron-right align-center" aria-hidden="true"> </i> 
                 </a> 
+                @endif
             </div>
         </div>
     </div>
