@@ -129,7 +129,7 @@
         <div class="col-md-4">
             <hr> 
             <div>
-                <a href="#" onclick="alert('coming soon');">
+                <a href="{{ Request::fullUrl() }}" id="fbButton">
                     <i class="fa fa-facebook-official" aria-hidden="true" style="font-size: 30px; color: #3b5998;"> 
                         <p class="share"> Kirim pesan Facebook </p>
                     </i> 
@@ -174,8 +174,25 @@
 @endsection
 
 @section('js')
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/id_ID/sdk.js#xfbml=1&version=v2.11';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <script>
+
     $(document).ready(function () {
+        $("#fbButton").click(function (e) {
+            e.preventDefault();
+            FB.ui({
+                method: 'share',
+                display: 'popup',
+                href: '{{ Request::fullUrl() }}',
+            }, function(response) {});
+        });
         $("#copyUrl").click(function () {
             $(this).children("input").select();
             document.execCommand("Copy");
