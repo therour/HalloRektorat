@@ -56,7 +56,7 @@
 */
 .cloud {
     position: relative;
-    background: white url('http://localhost:8000/bg-cloud.png');
+    background: white url('{{ asset('bg-cloud.png') }}');
     background-repeat: repeat-x;
     /* background-size: cover; */
     height: 80vh;
