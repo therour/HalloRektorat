@@ -53,9 +53,9 @@ $(document).ready(function () {
         var options = [];
         var pilihan = this.options[this.selectedIndex].value;
         var datadump = '{"data":[{"name": " Gagal menyambungkan...", "id": 1}]}';
-    
+        var url = $('meta[name="base_url"]').attr('content');
         $.ajax({
-            url:"http://localhost:8000/targets/" + pilihan, 
+            url: url + "/targets/" + pilihan, 
             success: function (response) {
                 var jsonTargets = JSON.parse(response).data
                 jsonTargets.forEach( function(item, index) {
