@@ -174,24 +174,13 @@
 @endsection
 
 @section('js')
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = 'https://connect.facebook.net/id_ID/sdk.js#xfbml=1&version=v2.11';
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
 <script>
 
     $(document).ready(function () {
         $("#fbButton").click(function (e) {
             e.preventDefault();
-            FB.ui({
-                method: 'share',
-                display: 'popup',
-                href: '{{ Request::fullUrl() }}',
-            }, function(response) {});
+            var fbpopup = window.open("https://www.facebook.com/sharer/sharer.php?u={{ Request::fullUrl()}}", "pop", "width=600, height=400, scrollbars=no");
+            return false;
         });
         $("#copyUrl").click(function () {
             $(this).children("input").select();
