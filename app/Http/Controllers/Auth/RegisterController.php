@@ -65,6 +65,7 @@ class RegisterController extends Controller
     {
         return Biodata::create([
             'fullname' => $data['name'],
+            'jurusan' => 1,
         ])->user()->create([
             'name' => $data['name'],
             'email' => $data['email'],
