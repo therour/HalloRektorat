@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/Biodata';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -65,7 +65,7 @@ class RegisterController extends Controller
     {
         return Biodata::create([
             'fullname' => $data['name'],
-            'jurusan' => 1,
+            'jurusan_id' => 1,
         ])->user()->create([
             'name' => $data['name'],
             'email' => $data['email'],
