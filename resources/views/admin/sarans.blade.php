@@ -39,10 +39,10 @@
 							<button type="button" class="btn btn-{{ $saran->isResponded() ? 'primary' : 'warning'}}" data-toggle="modal" data-target="#modalSaran{{$saran->id}}" style="display:inline;">{{ $saran->isResponded() ? 'Lihat' : 'Lihat & Tanggapi'}}</button>
 						</td>
 						<td>
-							<form action="{{ route('admin.saran.delete', ['saran' => $saran->id]) }}" method="POST">
+							<form action="{{ route('admin.saran.delete', ['saran' => $saran->id]) }}" method="POST" class="hapus-saran">
 								{{ csrf_field() }}
 								{{ method_field('DELETE') }}
-								<button style="display:inline;" type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
+								<button style="display:inline;" type="submit" class="btn btn-danger konfirmasi-hapus"><i class="fa fa-trash"></i> Hapus</button>
 							</form>
 						</td>
 					</tr>
@@ -53,5 +53,31 @@
 		</div>
 	</div>
 </div>
+@endsection
+
+@section('js')
+<script>
+	$(document).ready(function() {
+		$('.konfirmasi-hapus').click(function(e) {
+			e.preventDefault();
+			btn = $(this);
+			swal({
+				title: "Anda yakin?",
+				text: "Anda yakin akan menghapus saran ini?",
+				type: "warning",
+				showCancelButton: true,
+				confirmButtonText: "Ya, Hapus",
+				cancelButtonText: "Batalkan",
+				confirmButtonClass: "btn btn-primary",
+				cancelButtonClass: "btn btn-danger",
+				reverseButtons: true
+			}).then(function(result) {
+				if (result.value) {
+					btn.closest('form').submit();
+				} 
+			});
+		});
+	});
+</script>
 @endsection
 

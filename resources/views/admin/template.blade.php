@@ -169,7 +169,21 @@
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/tether.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/sweetalert2.js') }}"></script>
+
     @yield('js')
+
+    <script>
+        $(document).ready(function() {
+            @if (session('sukses'))
+                swal({
+                    title: "berhasil",
+                    text: "{{ session('sukses') }}",
+                    type: "success"
+                });
+            @endif
+        });
+    </script>
 </body>
 
 </html>

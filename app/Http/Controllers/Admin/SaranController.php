@@ -48,6 +48,6 @@ class SaranController extends Controller
         $saran->supports()->detach();
         $saran->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with('sukses', 'Saran berhasil dihapus');
     }
 }
