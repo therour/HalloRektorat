@@ -5,6 +5,7 @@
 <style>
     .support {
         padding:0px;
+        cursor:pointer;
     }
     .supported {
         color:red   ;
@@ -51,10 +52,10 @@
                             <div class="col-sm-12 col-md-3">
                                 <div class="media">
                                     <div class="media-body"> 
-                                        <form action="{{ url('/support') }}" method="POST">
+                                        <form action="{{ url('/support') }}" method="POST" class="dukung">
                                             {{ csrf_field() }}
                                             <input type="hidden" name="saran_id" value="{{ $saran->id }}">
-                                            <p class="name-profile"><button type="submit" class="support btn btn-link"><i class="fa fa-heart{{ $saran->isSupported() ? ' supported' : '-o'}}" aria-hidden="true"></i></button> {{ count($saran->supports) }}</p>
+                                            <p class="name-profile"><button type="submit" class="support btn btn-link"><i class="fa fa-heart{{ $saran->isSupported() ? ' supported' : '-o'}}" aria-hidden="true"></i></button> <span>{{ count($saran->supports) }}</span></p>
                                         </form>
                                     </div>
                                 </div>
@@ -161,12 +162,13 @@
                 <input type="text" value="{{ Request::fullUrl() }}" class="form-control form-control-sm" readonly>
             </div>
             <hr>
-             <form action="{{ url('/support') }}" method="POST">
+             <form action="{{ url('/support') }}" method="POST" class="dukung">
                 {{ csrf_field() }}
                 <input type="hidden" name="saran_id" value="{{ $saran->id }}">
-                <button type="submit" class="btn form-control {{ $saran->isSupported() ? 'btn-danger' : 'btn-primary'}}">
+                <button type="submit" id="btnSupport" class="btn form-control {{ $saran->isSupported() ? 'btn-danger' : 'btn-primary'}}">
                     {{ $saran->isSupported() ? 'Urungkan dukungan' : 'Ikut dukung' }}
                 </button>
+                <small><p class="text-muted" id="jmlOrangMendukung">{{ count($saran->supports) }} orang mendukung saran ini</p></small>
             </form>
         </div>
     </div>
@@ -191,6 +193,36 @@
               text: 'Url telah disalin',
               showConfirmButton: false,
               timer: 1000
+            });
+        });
+
+        $('.dukung').on('submit', function (e) {
+            $.ajaxSetup({
+                header:$('meta[name="_token"]').attr('content')
+            })
+            form = $('.dukung')
+            e.preventDefault(e);
+            var url = $('meta[name="base_url"]').attr('content');
+            $.ajax({
+                type:"POST",
+                url:url + "/support",
+                data:$(this).serialize(),
+                dataType: 'json',
+                success: function (response) {
+                    console.log(response);
+                    form.children("p").children("span").text(response.count);
+                    $('#jmlOrangMendukung').text(response.count + " orang mendukung saran ini");
+                    if (response.tambah) {
+                        form.children("p").children("button").children("i").removeClass("fa-heart-o").addClass("fa-heart supported");
+                        $('#btnSupport').removeClass("btn-primary").addClass("btn-danger").text("Urungkan dukungan");
+                    } else {
+                        form.children("p").children("button").children("i").removeClass("fa-heart supported").addClass("fa-heart-o");
+                        $('#btnSupport').removeClass("btn-danger").addClass("btn-primary").text("Ikut dukung");
+                    }
+                },
+                error: function (data) {
+                    console.log(data);
+                }
             });
         });
     });

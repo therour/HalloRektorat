@@ -69,11 +69,12 @@
                         <div class="col-sm-2 text-right">
                             <div class="media">
                                 <div class="media-body">  
-                                <form action="{{ url('/support') }}" method="POST" id="support{{ $saran->id }}">
+                                <!-- <form action="{{ url('/support') }}" method="POST" id="support{{ $saran->id }}">
                                     {{ csrf_field() }}
-                                    <input type="hidden" name="saran_id" value="{{ $saran->id }}">
+                                    <input type="hidden" name="saran_id" value="{{ $saran->id }}"> -->
                                 </form>
-                                   <a href="{{ url('/supportThis') }}" onclick="event.preventDefault(); document.getElementById('support{{$saran->id}}').submit();">
+                                <!-- href="{{ url('/supportThis') }}" onclick="event.preventDefault(); document.getElementById('support{{$saran->id}}').submit();" -->
+                                   <a>
                                     
                                        <p class="statistic-profile"><i data-toggle="tooltip" data-placement="top" title="{{ count($saran->supports) }}" class="fa fa-heart{{ $saran->isSupported() ? ' supported' : '-o' }}" aria-hidden="true"></i> {{ count($saran->supports) }}</p>
                                    </a> 

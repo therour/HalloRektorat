@@ -83,6 +83,7 @@
 
 .support, .supported {
     padding:0px;
+    cursor:pointer;
 }
 .supported {
     color:red;
@@ -167,12 +168,12 @@
                     <div class="col col-md-3">
                         <div class="media">
                             <div class="media-body">
-                                <form action="{{ url('/support') }}" method="POST">
+                                <form action="{{ url('/support') }}" method="POST" class="dukung">
                                     {{ csrf_field() }}
                                     <input type="hidden" name="saran_id" value="{{ $saran->id }}">
-                                    <button type="submit" class="btn btn-link {{ $saran->isSupported() ? 'supported' : 'support' }}"><i class="fa fa-heart{{ $saran->isSupported() ? '' : '-o'}} carousel-statistic" aria-hidden="true"></i></button> {{ count($saran->supports) }}
+                                    <button type="submit" class="btn btn-link {{ $saran->isSupported() ? 'supported' : 'support' }}"><i class="fa fa-heart{{ $saran->isSupported() ? '' : '-o'}} carousel-statistic" aria-hidden="true"></i></button> <span class="jmlDukungan">{{ count($saran->supports) }}</span>
                                 </form>
-                                <p class="d-none d-md-block major-profile">Pendukung </p>
+                                <p class="d-none d-md-block major-profile">Dukungan </p>
                             </div>
                         </div>
                     </div>
@@ -203,4 +204,36 @@
 @endsection
 
 @section('js')
+    <script>
+        $(document).ready(function() {
+            $('.dukung').on('submit', function (e) {
+                $.ajaxSetup({
+                    header:$('meta[name="_token"]').attr('content')
+                })
+                form = $(this)
+                e.preventDefault(e);
+                var url = $('meta[name="base_url"]').attr('content');
+                $.ajax({
+                    type:"POST",
+                    url:url + "/support",
+                    data:$(this).serialize(),
+                    dataType: 'json',
+                    success: function (response) {
+                        console.log(response);
+                        form.children("span").text(response.count);
+                        if (response.tambah) {
+                            form.children("button").removeClass("support").addClass("supported");
+                            form.children("button").children("i").removeClass("fa-heart-o").addClass("fa-heart");
+                        } else {
+                            form.children("button").removeClass("supported").addClass("support");
+                            form.children("button").children("i").removeClass("fa-heart").addClass("fa-heart-o");
+                        }
+                    },
+                    error: function (data) {
+                        console.log(data);
+                    }
+                });
+            });
+        });
+    </script>
 @endsection

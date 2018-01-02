@@ -45,10 +45,13 @@
                             <div class="col">
                                 <div class="media">
                                     <div class="media-body">   
-                                        <form action="{{ url('/support') }}" method="POST">
+                                        <form action="{{ url('/support') }}" method="POST" class="dukung">
                                             {{ csrf_field() }}
                                             <input type="hidden" name="saran_id" value="{{ $saran->id }}">
-                                            <button type="submit" class="btn btn-link {{ $saran->isSupported() ? 'supported' : 'support' }}"><i class="fa fa-heart{{ $saran->isSupported() ? '' : '-o'}} carousel-statistic" aria-hidden="true"></i></button> {{ count($saran->supports) }}
+                                            <button type="submit" class="btn btn-link {{ $saran->isSupported() ? 'supported' : 'support' }}"><i class="fa fa-heart{{ $saran->isSupported() ? '' : '-o'}} carousel-statistic" aria-hidden="true"></i></button> 
+                                            <span>
+                                                {{ count($saran->supports) }}
+                                            </span>
                                         </form>
                                         <p class="d-none d-md-block major-profile">Pendukung </p>
                                     </div>

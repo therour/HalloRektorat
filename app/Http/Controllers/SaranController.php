@@ -134,14 +134,21 @@ class SaranController extends Controller
         {
             // detach support if exist
             Saran::find($request->saran_id)->supports()->detach($request->user()->id);
+            $tambah = FALSE;
         }
         else 
         {
             // attach support if not exist
             Saran::find($request->saran_id)->supports()->attach($request->user()->id);
+            $tambah = TRUE;
         }
 
-        return redirect()->back();
+        // return redirect()->back();
+        $count = \DB::table('supports')->where('saran_id', $request->saran_id)->count();
+        return response()->json([
+            'count' => $count ,
+            'tambah' => $tambah
+        ]);
     }
 
 }
